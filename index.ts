@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded());
 const PORT = process.env.PORT;
 
 app.get("/", (req: Request, res: Response) => {
@@ -15,7 +17,7 @@ app.get("/apps/github/callback", (req, res) => {
 });
 
 app.post("/apps/github/webhook", (req, res) => {
-  console.log("called");
+  console.log("called", req.body);
 
   res.json({ received: true });
 });
