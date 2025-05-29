@@ -14,7 +14,9 @@ app.get("/apps/github/callback", (req, res) => {
   res.json({ redirect_uri: "https://google.com" });
 });
 
-app.post("/apps/github/callback", (req, res) => {
+app.post("/apps/github/webhook", (req, res) => {
+  console.log("called");
+
   res.json({ received: true });
 });
 
